@@ -1,5 +1,5 @@
 /*
- * This file is part of MPSolve 3.2.1
+ * This file is part of MPSolve 3.2.2
  *
  * Copyright (C) 2001-2020, Dipartimento di Matematica "L. Tonelli", Pisa.
  * License: http://www.gnu.org/licenses/gpl.html GPL version 3 or higher
@@ -258,7 +258,7 @@ mps_monomial_poly_read_from_stream_v2 (mps_context * s, mps_input_buffer * buffe
 {
   int i;
   mps_monomial_poly *poly = NULL;
-  char data_type[3];
+  char data_type[4];
   char *token;
   mpf_t ftmp;
   mpq_t qtmp;

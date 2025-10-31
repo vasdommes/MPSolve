@@ -1,5 +1,5 @@
 /*
- * This file is part of MPSolve 3.2.1
+ * This file is part of MPSolve 3.2.2
  *
  * Copyright (C) 2001-2020, Dipartimento di Matematica "L. Tonelli", Pisa.
  * License: http://www.gnu.org/licenses/gpl.html GPL version 3 or higher
@@ -158,11 +158,6 @@ struct mps_input_configuration {
    */
   mps_phase starting_phase;
 };
-
-/* Properties of the root */
-#define MPS_OUTPUT_PROPERTY_NONE      (0x00)
-#define MPS_OUTPUT_PROPERTY_REAL      (0x01)
-#define MPS_OUTPUT_PROPERTY_IMAGINARY (0x01 << 1)
 
 /**
  * @brief Configuration for the output.
