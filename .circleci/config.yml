@@ -34,6 +34,8 @@ jobs:
             CPPFLAGS="-I`brew --prefix gmp`/include -I`brew --prefix bison`/include -I`brew --prefix flex`/include"
             CFLAGS=$CPPFLAGS
             echo "LDFLAGS=$LDFLAGS CPPFLAGS=$CPPFLAGS CFLAGS=$CFLAGS"
+            echo "ls /opt/homebrew/opt/gmp/include" && ls /opt/homebrew/opt/gmp/include
+            echo "ls `brew --prefix gmp`/include" && ls `brew --prefix gmp`/include
             ./autogen.sh
             ./configure --prefix=$HOME/install --disable-dependency-tracking --disable-examples --disable-ui --disable-graphical-debugger --disable-documentation
             make
