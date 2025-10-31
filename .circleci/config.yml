@@ -12,7 +12,6 @@ jobs:
       - run:
           name: Setup environment
           command: |
-            export HOMEBREW_NO_AUTO_UPDATE=1
             export HOMEBREW_NO_INSTALL_CLEANUP=1
             export HOMEBREW_NO_ANALYTICS=1
             brew install gmp mpfr boost rapidjson libarchive openblas flint cmake open-mpi metis automake libtool pkgconf bison
