@@ -12,24 +12,30 @@ jobs:
       - run:
           name: Setup environment
           command: |
-            export HOMEBREW_NO_AUTO_UPDATE=1
-            export HOMEBREW_NO_INSTALL_CLEANUP=1
-            export HOMEBREW_NO_ANALYTICS=1
-            brew install gmp mpfr boost rapidjson libarchive openblas flint cmake open-mpi metis automake libtool pkgconf flex
+            HOMEBREW_NO_AUTO_UPDATE=1
+            HOMEBREW_NO_INSTALL_CLEANUP=1
+            HOMEBREW_NO_ANALYTICS=1
+            brew install gmp mpfr boost rapidjson libarchive openblas flint cmake open-mpi metis automake libtool pkgconf bison flex
       - run:
           name: Print software versions
           command: |
             mpicxx --version
             which bison
             bison --version
+            `brew --prefix bison`/bin/bison --version
             which flex
             flex --version
       - run:
           name: Build MPSolve
           command: |
+            CC=mpicc
+            CXX=mpicxx
+            LDFLAGS="-L`brew --prefix gmp`/lib -L`brew --prefix bison`/lib -L`brew --prefix flex`/lib"
+            CPPFLAGS="-I`brew --prefix gmp`/include -I`brew --prefix bison`/include -I`brew --prefix flex`/include"
             ./autogen.sh
-            CC=mpicc CXX=mpicxx LDFLAGS="-L`brew --prefix gmp`/lib -L`brew --prefix flex`/lib" CPPFLAGS="-I`brew --prefix gmp`/include -I`brew --prefix flex`/include" ./configure --prefix=$HOME/install --disable-dependency-tracking --disable-examples --disable-ui --disable-graphical-debugger --disable-documentation
-            make && make install
+            ./configure --prefix=$HOME/install --disable-dependency-tracking --disable-examples --disable-ui --disable-graphical-debugger --disable-documentation
+            make
+            make install
       - run:
           name: Check installation
           command: |
