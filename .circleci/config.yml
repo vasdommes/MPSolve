@@ -32,6 +32,8 @@ jobs:
             CXX=mpicxx
             LDFLAGS="-L`brew --prefix gmp`/lib -L`brew --prefix bison`/lib -L`brew --prefix flex`/lib"
             CPPFLAGS="-I`brew --prefix gmp`/include -I`brew --prefix bison`/include -I`brew --prefix flex`/include"
+            CFLAGS=CPPFLAGS
+            echo "LDFLAGS=$LDFLAGS CPPFLAGS=$CPPFLAGS CFLAGS=$CFLAGS"
             ./autogen.sh
             ./configure --prefix=$HOME/install --disable-dependency-tracking --disable-examples --disable-ui --disable-graphical-debugger --disable-documentation
             make
