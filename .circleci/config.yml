@@ -26,6 +26,9 @@ jobs:
       - run:
           name: Build MPSolve
           command: |
+            echo $PKG_CONFIG_PATH
+            export PKG_CONFIG_PATH="$(brew --prefix)/lib/pkgconfig:$PKG_CONFIG_PATH"
+            echo $PKG_CONFIG_PATH
             ./autogen.sh
             CC=mpicc CXX=mpicxx LDFLAGS="-L`brew --prefix gmp`/lib" CPPFLAGS="-I`brew --prefix gmp`/include" YACC=`brew --prefix bison`/bin/yacc ./configure --prefix=$HOME/install --disable-dependency-tracking --disable-examples --disable-ui --disable-graphical-debugger --disable-documentation
             make
