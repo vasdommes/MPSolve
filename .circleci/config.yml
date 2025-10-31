@@ -13,6 +13,10 @@ jobs:
           name: Setup environment
           command: |
             brew install gmp mpfr boost rapidjson libarchive openblas flint cmake open-mpi metis automake libtool pkgconf flex
+            mpicxx --version
+            which bison
+            bison --version
+            flex --version
       - run:
           name: Build MPSolve
           command: |
