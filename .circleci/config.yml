@@ -30,8 +30,8 @@ jobs:
           command: |
             export CC=mpicc
             export CXX=mpicxx
-            export LDFLAGS="-L`brew --prefix gmp`/lib -L`brew --prefix bison`/lib -L`brew --prefix flex`/lib"
-            export CPPFLAGS="-I`brew --prefix gmp`/include -I`brew --prefix bison`/include -I`brew --prefix flex`/include"
+            export LDFLAGS="-L`brew --prefix gmp`/lib -L`brew --prefix bison`/lib"
+            export CPPFLAGS="-I`brew --prefix gmp`/include -I`brew --prefix bison`/include"
             export YACC=`brew --prefix bison`/bin/yacc
             echo "YACC=$YACC"
             echo "LDFLAGS=$LDFLAGS CPPFLAGS=$CPPFLAGS"
