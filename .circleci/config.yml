@@ -28,11 +28,11 @@ jobs:
       - run:
           name: Build MPSolve
           command: |
-            CC=mpicc
-            CXX=mpicxx
-            LDFLAGS="-L`brew --prefix gmp`/lib -L`brew --prefix bison`/lib -L`brew --prefix flex`/lib"
-            CPPFLAGS="-I`brew --prefix gmp`/include -I`brew --prefix bison`/include -I`brew --prefix flex`/include"
-            CFLAGS=$CPPFLAGS
+            export CC=mpicc
+            export CXX=mpicxx
+            export LDFLAGS="-L`brew --prefix gmp`/lib -L`brew --prefix bison`/lib -L`brew --prefix flex`/lib"
+            export CPPFLAGS="-I`brew --prefix gmp`/include -I`brew --prefix bison`/include -I`brew --prefix flex`/include"
+            export CFLAGS=$CPPFLAGS
             echo "LDFLAGS=$LDFLAGS CPPFLAGS=$CPPFLAGS CFLAGS=$CFLAGS"
             echo "ls /opt/homebrew/opt/gmp/include" && ls /opt/homebrew/opt/gmp/include
             echo "ls `brew --prefix gmp`/include" && ls `brew --prefix gmp`/include
