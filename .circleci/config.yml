@@ -26,17 +26,8 @@ jobs:
       - run:
           name: Build MPSolve
           command: |
-            export CC=mpicc
-            export CXX=mpicxx
-            export LDFLAGS="-L`brew --prefix gmp`/lib"
-            export CPPFLAGS="-I`brew --prefix gmp`/include"
-            export YACC=`brew --prefix bison`/bin/yacc
-            echo "YACC=$YACC"
-            echo "LDFLAGS=$LDFLAGS CPPFLAGS=$CPPFLAGS"
-            echo "ls /opt/homebrew/opt/gmp/include" && ls /opt/homebrew/opt/gmp/include
-            echo "ls `brew --prefix gmp`/include" && ls `brew --prefix gmp`/include
             ./autogen.sh
-            ./configure --prefix=$HOME/install --disable-dependency-tracking --disable-examples --disable-ui --disable-graphical-debugger --disable-documentation
+            CC=mpicc CXX=mpicxx LDFLAGS="-L`brew --prefix gmp`/lib" CPPFLAGS="-I`brew --prefix gmp`/include" YACC=`brew --prefix bison`/bin/yacc ./configure --prefix=$HOME/install --disable-dependency-tracking --disable-examples --disable-ui --disable-graphical-debugger --disable-documentation
             make
             make install
       - run:
