@@ -21,12 +21,12 @@ jobs:
             mpicxx --version
             which bison
             bison --version
-            `brew --prefix bison`/bin/bison --version
+            $(brew --prefix bison)/bin/bison --version
       - run:
           name: Build MPSolve
           command: |
             ./autogen.sh
-            CC=mpicc CXX=mpicxx LDFLAGS="-L`brew --prefix gmp`/lib" CPPFLAGS="-I`brew --prefix gmp`/include" YACC=`brew --prefix bison`/bin/yacc ./configure --prefix=$HOME/install --disable-dependency-tracking --disable-examples --disable-ui --disable-graphical-debugger --disable-documentation
+            CC=mpicc CXX=mpicxx LDFLAGS="-L$(brew --prefix gmp)/lib" CPPFLAGS="-I$(brew --prefix gmp)/include" YACC=$(brew --prefix bison)/bin/yacc ./configure --prefix=$HOME/install --disable-dependency-tracking --disable-examples --disable-ui --disable-graphical-debugger --disable-documentation
             make
             make install
       - run:
