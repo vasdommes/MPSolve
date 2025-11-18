@@ -18,6 +18,8 @@ jobs:
       - run:
           name: Print software versions
           command: |
+            brew --version
+            brew info boost
             mpicxx --version
             which bison
             bison --version
